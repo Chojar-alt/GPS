@@ -57,10 +57,12 @@ public class MainActivity extends AppCompatActivity {
                 textViewLongitude.setText(String.valueOf(location.getLongitude()));
                 textViewLatitude.setText(String.valueOf(location.getLatitude()));
                 String text = textViewLatitude.getText().toString();
+                String textOne = textViewLongitude.getText().toString();
                 if(!text.isEmpty()){
-                    if (databaseHelper.addText(text)){
+                    if (databaseHelper.addText(text) && databaseHelper.addText(textOne)){
 
                         textViewLatitude.setText("");
+                        textViewLongitude.setText("");
                         arrayList.clear();
                         arrayList.addAll(databaseHelper.getAllText());
                         arrayAdapter.notifyDataSetChanged();
